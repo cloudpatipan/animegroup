@@ -56,7 +56,7 @@ export default function Home() {
     <div className="w-[85%] mx-auto">
       <h1 className="text-3xl font-semibold my-4 text-[#38b6ff]">ANIME-API</h1>
       <div className="grid grid-cols-2 md:grid-cols-6 gap-4">
-        {/* {animeData?.mal_id} */}
+
         {animeData.length > 0 ? (
           animeData.map((anime) => (
             <div key={anime.mal_id} className="overflow-hidden shadow-2xl" onClick={() => fetchAnimeDeatail(anime.mal_id)}>
@@ -72,8 +72,11 @@ export default function Home() {
                   </div>
                 </div>
 
-                <div>
+                <div className="relative">
                   <img className="w-full h-full object-cover hover:bg-black" src={anime.images.jpg.image_url} alt={`รูปภาพของ ${anime.mal_id}`} />
+                  <div className="absolute top-0 w-full h-full group hover:backdrop-blur-sm transition-all duration-300 flex items-center justify-center">
+                  <svg className="opacity-0 group-hover:opacity-100" width="24" height="24" xmlns="http://www.w3.org/2000/svg" fill="white" fill-rule="evenodd" clip-rule="evenodd"><path d="M23 12l-22 12v-24l22 12zm-21 10.315l18.912-10.315-18.912-10.315v20.63z"/></svg>
+                  </div>
                 </div>
 
               </div>
@@ -86,7 +89,6 @@ export default function Home() {
         )}
       </div>
 
-      {console.log(animeDataDetail)}
       {animeDataDetail && (
         <div
           className={`fixed inset-0 z-50 flex items-center justify-center bg-black/60 bg-opacity-50 transition-opacity duration-300 ${isOpenModal ? 'opacity-100' : 'opacity-0 pointer-events-none'}`}
@@ -130,6 +132,10 @@ export default function Home() {
 
         </div>
       )}
+
+      <footer className="p-4 flex items-center justify-center text-white">
+      © Copyright by Group Anime-API
+      </footer>
 
 
     </div >
