@@ -4,11 +4,15 @@
 
 
 body {
-  background: black;
+  background: #242428;
 }
 
 @layer utilities {
   .text-balance {
     text-wrap: balance;
   }
+}
+
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
 }
